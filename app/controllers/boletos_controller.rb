@@ -1,0 +1,2 @@
+class BoletosController < ApplicationController
+end
