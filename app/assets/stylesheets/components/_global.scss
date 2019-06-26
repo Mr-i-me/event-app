@@ -2,8 +2,13 @@
 body {
   overflow-x: hidden;
   @include body-font;
-   padding-top: 56px;
+   // padding-top: 56px;
 
+}
+@media(max-width:768px) {
+  body {
+    padding-top: 56px;
+  }
 }
 
 p {
@@ -32,25 +37,39 @@ h6 {
 }
 
 
-// .page-section {
-//   padding: 100px 0;
-//   h2.section-heading {
-//     font-size: 40px;
-//     margin-top: 0;
-//     margin-bottom: 15px;
-//   }
-//   h3.section-subheading {
-//     font-size: 16px;
-//     font-weight: 400;
-//     font-style: italic;
-//     margin-bottom: 75px;
-//     text-transform: none;
-//     @include serif-font;
-//   }
-// }
+.carousel-item {
+  height: 75vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.page-section {
+  padding: 100px 0;
+  h2.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  h3.section-subheading {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 75px;
+    text-transform: none;
+    @include serif-font;
+  }
+}
 // @media(max-width:768px) {
 //   section {
-//     padding: 150px 0;
+//     padding: 10px;
 //   }
 // }
 
@@ -98,18 +117,4 @@ img::selection {
 
 img::-moz-selection {
   background: transparent;
-}
-
-.carousel-item {
-  height: 75vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.portfolio-item {
-  margin-bottom: 30px;
 }
