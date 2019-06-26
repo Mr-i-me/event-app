@@ -1,5 +1,5 @@
 <!-- Header -->
-<header>
+<header >
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" >
+      <div class="carousel-item">
         <%= image_tag "red_hot_chili_peppers.jpg", class: "background" %>
         <div class="carousel-caption d-none d-md-block">
           <h3>Second Slide</h3>
@@ -41,41 +41,40 @@
     </a>
   </div>
 </header>
-<section>
 
+
+<section class="page-section">
   <!-- Page Content -->
   <div class="container">
-
     <h1 class="my-4">Events</h1>
-
-
-    <%# @events.each do |event|   %>
-    <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <%= image_tag  "aloe_blacc.jpg", class: "card-img-top" %>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Title</a>
-            </h4>
-            <p class="card-text"> Desciptio</p>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col-sm-6">
-                <i class="fas fa-ticket-alt"> 150</i>
-              </div>
-              <div class="col-md-6 ">
-                <i class="fas fa-dollar-sign float-right"> Valor</i>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <%= image_tag "aloe_blacc.jpg", class: "card-img-top" %>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Title</a>
+              </h4>
+              <p class="card-text">
+                Desciptio</p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-sm-6">
+                  <i class="fas fa-ticket-alt">
+                    150</i>
+                </div>
+                <div class="col-md-6 ">
+                  <i class="fas fa-dollar-sign float-right">
+                    Valor</i>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
+      <!-- /.row -->
     </div>
-    <!-- /.row -->
-    <%# end %>
-  </div>
-
 </section>
+
+<%= render "shared/contact" %>
