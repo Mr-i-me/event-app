@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :boletos
   resources :tickets
   resources :events
   devise_for :users
