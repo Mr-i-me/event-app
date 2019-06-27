@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :events
   has_many :boletos
-  has_many :tickets, :through => :events
+  has_many :tickets
+  has_many :tickets, through: :orders
 end
