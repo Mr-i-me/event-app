@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :boletos
-  resources :tickets
-  resources :events
-  devise_for :users
   root to: 'pages#home'
+  devise_for :users do
+
+    resources :orders do
+      resources :boletos
+    end
+  end
+  resources :events do
+    resources :tickets
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
