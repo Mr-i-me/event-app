@@ -1,32 +1,32 @@
-// // Styling for the masthead
-// header.masthead {
-//   text-align: center;
-//   color: white;
-//   background-image: url('aloe_blacc.jpg');
-//   background-repeat: no-repeat;
-//   background-attachment: scroll;
-//   background-position: center center;
-//   background-size: cover;
-//   .intro-text {
-//     padding-top: 150px;
-//     padding-bottom: 100px;
-//     .intro-lead-in {
-//       font-size: 22px;
-//       font-style: italic;
-//       line-height: 22px;
-//       margin-bottom: 25px;
-//       @include serif-font;
-//     }
-//     .intro-heading {
-//       font-size: 50px;
-//       font-weight: 700;
-//       line-height: 50px;
-//       margin-bottom: 25px;
-//       @include heading-font;
-//     }
-//   }
-// }
-@media(max-width:768px) {
+// Styling for the masthead
+header.masthead {
+  text-align: center;
+  color: white;
+  // background-image: url('aloe_blacc.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  .intro-text {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    .intro-lead-in {
+      font-size: 22px;
+      font-style: italic;
+      line-height: 22px;
+      margin-bottom: 25px;
+      @include serif-font;
+    }
+    .intro-heading {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 50px;
+      margin-bottom: 25px;
+      @include heading-font;
+    }
+  }
+}
+@media(min-width:768px) {
   header.masthead {
     .intro-text {
       padding-top: 300px;
