@@ -5,11 +5,11 @@ body {
    // padding-top: 56px;
 
 }
-@media(max-width:768px) {
-  body {
-    padding-top: 56px;
-  }
-}
+// @media(max-width:768px) {
+//   body {
+//     padding-top: 56px;
+//   }
+// }
 
 p {
   line-height: 1.75;
@@ -37,22 +37,9 @@ h6 {
 }
 
 
-.carousel-item {
-  height: 75vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.portfolio-item {
-  margin-bottom: 30px;
-}
 
 .page-section {
-  padding: 100px 0;
+  padding-bottom: 100px;
   h2.section-heading {
     font-size: 40px;
     margin-top: 0;
@@ -67,11 +54,11 @@ h6 {
     @include serif-font;
   }
 }
-// @media(max-width:768px) {
-//   section {
-//     padding: 10px;
-//   }
-// }
+@media(max-width:768px) {
+  section {
+    padding: 10px;
+  }
+}
 
 // Button Styles
 .btn {

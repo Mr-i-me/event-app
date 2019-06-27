@@ -1,6 +1,3 @@
-import "bootstrap";
-
-
 let i=2;
 
 
