@@ -2,6 +2,7 @@
 
 
 ### Events
+` User can create Event,(dit delete their event )`
 - belongs_to user
 - has many Tickets
 ### Model

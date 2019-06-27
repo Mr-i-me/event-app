@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :event_params, only: [:create]
+  before_action :set_event_id, except: %i[ new ]
+
   def index
     @events = Event.all
     # code
@@ -9,7 +11,7 @@ class EventsController < ApplicationController
   def show; end
 
   def new
-    @event = Event.new
+    @event = Event.new(params[:id])
   end
 
   def create
@@ -28,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   def event_params
-    params.require(:event).permit(:title,
+    params.require(:event).permit(:id, :title,
                                   :description,
                                   :main_img,
                                   :tickets,
