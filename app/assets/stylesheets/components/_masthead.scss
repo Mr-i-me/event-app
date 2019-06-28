@@ -2,6 +2,7 @@
 header.masthead {
   text-align: center;
   color: white;
+   background-image: linear-gradient(to top right, gray, blue); /* Standard syntax (must be last) */
   // background-image: url('aloe_blacc.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
