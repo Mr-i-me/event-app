@@ -8,8 +8,8 @@
       <ul>
         <li>
           <%= f.input :title , class: "field-style field-split align-left form-control"%>
-          <%= f.input :tickets , class: "form-control field-style field-split align-right"%></li>
           <li><%= f.input :description , class: "form-control field-style field-full align-none" %></li>
+          <li><%= f.input :tickets , as: :numeric, class: "form-ceontrol field-style field-split align-right"%></li>
 
           <li><%= f.input :main_img , class: "form-control form-control field-style field-split align-right"%></li>
           <br>

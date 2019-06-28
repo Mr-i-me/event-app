@@ -1,11 +1,11 @@
 // Styling for the masthead
 header.masthead {
-  text-align: center;
+  text-align: left;
   color: white;
-  // background-image: url('aloe_blacc.jpg');
+  background-image: url('gatsby.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
+  background-position: inherit;
   background-size: cover;
   .intro-text {
     padding-top: 150px;

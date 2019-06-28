@@ -3,5 +3,6 @@ class Event < ApplicationRecord
   has_many :tickets
   has_many :orders, :through => :tickets
   has_many :users, :through => :tickets
+  validates :tickets, presence: true, numericality: :integer, allow_blank: false
 
 end

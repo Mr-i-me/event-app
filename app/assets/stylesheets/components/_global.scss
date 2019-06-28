@@ -2,14 +2,7 @@
 body {
   overflow-x: hidden;
   @include body-font;
-   // padding-top: 56px;
-
 }
-// @media(max-width:768px) {
-//   body {
-//     padding-top: 56px;
-//   }
-// }
 
 p {
   line-height: 1.75;
@@ -36,10 +29,8 @@ h6 {
   @include heading-font;
 }
 
-
-
 .page-section {
-  padding-bottom: 100px;
+  padding: 100px 0;
   h2.section-heading {
     font-size: 40px;
     margin-top: 0;
@@ -54,11 +45,11 @@ h6 {
     @include serif-font;
   }
 }
-@media(max-width:768px) {
-  section {
-    padding: 10px;
-  }
-}
+// @media(min-width:768px) {
+//   section {
+//     padding: 150px 0;
+//   }
+// }
 
 // Button Styles
 .btn {

@@ -19,6 +19,8 @@ gem 'jquery-rails'
 gem 'webpacker'
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
   gem 'web-console', '>= 3.3.0'
 end
 
