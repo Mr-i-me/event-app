@@ -1,7 +1,14 @@
 class TicketsController < ApplicationController
- before_action :set_ticket
+  before_action :set_ticket, except: %i[create new]
+
+  def sku
+    @ticketid = Tickets.event_id
+    @sku = @ticketid + @ticket.id
+    Ticket.sku = @sku
+  end
+
   def index
-      @tickets = Ticket.all
+     @tickets = Ticket.all
   end
 
   def show
@@ -9,11 +16,11 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @ticket.user = current_user
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
-    @ticket.user = current_user
+    @ticket = Tickets.new(ticket_params)
 
     if @ticket.save
       # raise
@@ -53,10 +60,10 @@ class TicketsController < ApplicationController
   #   @tickets = Ticket.where("user_id = #{current_user.id}")
   # end
 
-  private
+private
 
   def set_ticket
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.select(params[:id])
   end
 
   def ticket_params
@@ -64,6 +71,7 @@ class TicketsController < ApplicationController
       :description,
       :main_img,
       :tickets,
+      :sku,
       :sold,
       :user_id,
       :created_at,

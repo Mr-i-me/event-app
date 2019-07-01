@@ -1,4 +1,4 @@
-$color_1: #fff;
+
 $font_family_1: arial, verdana, tahoma;
 
 /*Now the styles*/
@@ -20,14 +20,15 @@ default width = 800/5 = 160px;
 	padding: 0;
 }
 .accordian {
-	width: 805px;
-	height: 320px;
+	width: 65vw;
+	height: 40vh;
 	overflow: hidden;
 	margin: 100px auto;
 	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
 	-webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
 	-moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
 	ul {
+
 		width: 1200px;
 		&:hover {
 			li {
@@ -65,7 +66,7 @@ default width = 800/5 = 160px;
 	width: 640px;
 	a {
 		display: block;
-		color: $color_1;
+		color: $primary;
 		text-decoration: none;
 		padding: 20px;
 		font-size: 16px;

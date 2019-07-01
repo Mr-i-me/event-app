@@ -1,5 +1,41 @@
 <section class="page-top ">
+  <div class="container-fluid w-100     ">
 
-  <%= render "shared/headerImg" %>
-<%= render "shared/contact" %>
+    <div class="row py-5">
+      <div class="col-lg-12">
+        <div class="d-flex justify-content-lg-center">
+
+          <%= render "shared/headerImg" %>
+        </div>
+      </div>
+    </div>
+    <div class="sticky-top">
+      <div class="container justify-content-center">
+
+        <div class="jumbotron-fluid w-100">
+          <div class="row">
+            <!--------------- column --------------->
+
+            <div class="col-sm-1 mt-o"></div>
+            <!--------------- column --------------->
+
+            <div class="col-md-8 mt-0">
+              <h1 class="display-5">Check Out Our Current Events</h1>
+
+            </div>
+            <!--------------- column --------------->
+            <div class="col-sm-2">
+              <div class="z-depth-3">
+                <%= button_to envents_index_path %>
+                <a class="btn btn-primary btn-rounded text-uppercase js-scroll-trigger float-right" href="#services">Events</a>
+              </div>
+            </div>
+            <!--------------- column --------------->
+            <div class="col-sm-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render "shared/contact" %>
+  </div>
 </section>
