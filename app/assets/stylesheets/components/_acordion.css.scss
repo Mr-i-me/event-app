@@ -15,10 +15,7 @@ default width = 800/5 = 160px;
 /*Lets apply hover effects now*/
 /*The LI hover style should override the UL hover style*/
 /*Image title styles*/
-* {
-	margin: 0;
-	padding: 0;
-}
+
 .accordian {
 	width: 65vw;
 	height: 40vh;
@@ -29,7 +26,7 @@ default width = 800/5 = 160px;
 	-moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
 	ul {
 
-		width: 1200px;
+		width: 100vw;
 		&:hover {
 			li {
 				width: 40px;

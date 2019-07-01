@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+5.times do |i|
+  i.Event.create([{title: Faker::Artist.name,
+   i.description: Faker::Marketing.buzzwords,
+   i.tickets: Faker::Number.within(25..250)
+    }])
+  end
