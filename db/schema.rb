@@ -29,36 +29,18 @@ ActiveRecord::Schema.define(version: 2019_06_26_192741) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "main_img"
-    t.integer "tickets"
+    t.integer "event_tickets"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "host"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "p_orders", force: :cascade do |t|
-    t.integer "price"
-    t.bigint "guest_id"
-    t.bigint "host_id"
-    t.bigint "ticket_id"
-    t.date "o_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["guest_id"], name: "index_p_orders_on_guest_id"
-    t.index ["host_id"], name: "index_p_orders_on_host_id"
-    t.index ["ticket_id"], name: "index_p_orders_on_ticket_id"
-  end
-
   create_table "tickets", force: :cascade do |t|
-    t.string "title"
-    t.integer "value"
+    t.integer "sku"
     t.bigint "event_id"
-    t.string "ticketImg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sku"
     t.boolean "sold"
     t.index ["event_id"], name: "index_tickets_on_event_id"
   end
@@ -75,4 +57,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_192741) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
+  add_foreign_key "tickets", "events"
 end

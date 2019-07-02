@@ -1,18 +1,14 @@
-<div class="container">
-  <%= simple_form_for @ticket, wrapper_mappings: { check_boxes: :vertical_collection, radio_buttons: :vertical_collection, file: :custom_file, boolean: :custom_boolean_switch } do |f| %>
-  <%= f.error_notification %>
 
-  <%= f.input :name , class: "form-control"%>
-  <%= f.input :main_img , class: "form-control"%>
-  <%= f.input :ticket , class: "form-control"%>
-  <%= f.input :sold , class: "form-control"%>
-  <%= f.input :user_id , class: "form-control"%>
-  <%= f.input :created_at , class: "form-control"%>
-  <%= f.input :updated_at, class: "form-control"%>
-  <%= f.input :price , class: "form-control"%>
-  <%= f.input :description %>
-  <br>
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<%= simple_form_for(@ticket) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :sku %>
+    <%= f.association :event %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
-</div>

@@ -8,7 +8,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url(<%= asset_path 'aloe_blacc'%>)" background-size: "contain">
+      <div class="carousel-item active" style="background-image: url(<%= asset_path 'aloe_blacc'%>)" background-size:="background-size:" "contain">
 
         <div class="carousel-caption d-none d-md-block">
           <h3>First Slide</h3>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url(<%= asset_path 'red_hot_chili_peppers.jpg', class: " img-fluid" %>)"="img-fluid" %>)"">
+      <div class="carousel-item" style="background-image: url(<%= asset_path 'red_hot_chili_peppers.jpg', class: " img-fluid" %>)"="img-fluid" %="%">)"">
         <div class="carousel-caption d-none d-md-block">
           <h3>Second Slide</h3>
           <p>This is a description for the second slide.</p>
@@ -42,38 +42,44 @@
 </header>
 
 <section class="page-section" id="event-card">
+<%= link_to "New Evevent", new_event_path, class: "btn btn-primary" %>
   <!-- Page Content -->
   <div class="container">
     <h1 class="my-4">Events</h1>
     <div class="row">
       <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <%= image_tag "aloe_blacc.jpg", class: "card-img-top" %>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Title</a>
-            </h4>
-            <p class="card-text">
-              Desciptio</p>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col-sm-6">
-                <i class="fas fa-ticket-alt">
-                  150</i>
-              </div>
-              <div class="col-md-6 ">
-                <i class="fas fa-dollar-sign float-right">
-                  Valor</i>
+
+        <% @events.each do |event| %>
+        <%= link_to event do %>
+          <div class="card h-100">
+            <%= image_tag "aloe_blacc.jpg", class: "card-img-top" %>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#"><%= event.title %></a>
+              </h4>
+              <p class="card-text"><%= event.description %></p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-sm-6">
+                  <i class="fas fa-ticket-alt">
+                    <%= event.event_tickets %></i>
+                </div>
+                <div class="col-md-6 ">
+                  <i class="fas fa-dollar-sign float-right">
+                    Valor</i>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+
         </div>
       </div>
     </div>
     <!-- /.row -->
   </div>
+<% end %>
 </section>
-<%= link_to "New Evevent", new_event_path, class: "btn btn-primary" %>
+
 
 <%= render "shared/contact" %>

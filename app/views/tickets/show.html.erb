@@ -1,1 +1,14 @@
+<p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Sku:</strong>
+  <%= @ticket.sku %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @ticket.event %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
