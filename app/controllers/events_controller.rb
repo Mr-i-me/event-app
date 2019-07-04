@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show edit update destroy]
+  before_action :set_event, only: %i[show edit update destroy create_tickets]
 
   # GET /events
   # GET /events.json
@@ -26,15 +26,20 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+    @tickets = @event.event_tickets
 
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if @event.save
+      @tickets.times do
+        Ticket.create(event: @event, sold: false)
       end
+      format.html { redirect_to @event, notice: 'Event was successfully created.' }
+      format.json { render :show, status: :created, location: @event }
+
+    else
+      format.html { render :new }
+      format.json { render json: @event.errors, status: :unprocessable_entity }
+    end
     end
   end
 
@@ -62,7 +67,7 @@ class EventsController < ApplicationController
     end
   end
 
-    private
+  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_event

@@ -1,10 +1,14 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket, only: %i[show edit update destroy]
 
   # GET /tickets
   # GET /tickets.json
   def index
     @tickets = Ticket.all
+    event_id = params[:event_id]
+    @events = Event.all
+    @e_tickets = Ticket.where(event_id: event_id)
+
   end
 
   # GET /tickets/1
@@ -25,7 +29,9 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-
+    @sku = @ticket + @ticket.event_id
+    # @event = @ticket.event_id
+    Ticket.sku = @sku
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
@@ -62,13 +68,14 @@ class TicketsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ticket
-      @ticket = Ticket.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ticket_params
-      params.require(:ticket).permit(:sku, :event_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ticket
+    @ticket = Ticket.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ticket_params
+    params.require(:ticket).permit(:sku, :event_id, :price)
+  end
 end
