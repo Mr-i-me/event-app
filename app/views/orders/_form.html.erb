@@ -5,7 +5,8 @@
 
   <div class="form-inputs">
     <% f.association :user %>
-    <%= f.association :ticket %>
+    <%= f.association :ticket,as:@ticket %>
+
     <% f.input :price %>
   </div>
 

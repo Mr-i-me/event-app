@@ -1,0 +1,12 @@
+$background_color_1: #eeeeee;
+
+.table {
+	tr {
+		cursor: pointer;
+	}
+}
+.hiddenRow {
+	padding: 0 4px !important;
+	background-color: $background_color_1;
+	font-size: 13px;
+}

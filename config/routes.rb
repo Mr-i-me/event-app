@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   # resources :boletos
 
   resources :events
-    resources :ticket do
-    resources :orders, only: %i[ new create ]
+  resources :tickets do
+  resources :orders, only: %i[ new create ]
 end
+  #
 resources :orders, only: %i[index show update delete edit]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

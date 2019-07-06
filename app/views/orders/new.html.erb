@@ -11,8 +11,24 @@
   </div>
   <div class="col-md-8">
 
+    <%= simple_form_for(@order) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <%= render 'form', order: @order %>
+      <div class="form-inputs">
+        <%= f.association :user, label: @order.user.email, placeholder: @order.user.email, disabled: true, hint: 'To purchase with a diferent User Sign in With a different account.' %>
+        <%= f.association :ticket, label: @ticket.event.title, placeholder: @ticket.event.title, disabled: true, hint: "Ticket Automaticaly Selected" %>
+
+        <% f.input :price, readonl: true, hint: 'You cannot change your username.' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+
+
+    <%#= render 'form', order: @order %>
 
     <%= link_to 'Back', orders_path %>
 
@@ -23,5 +39,6 @@
 </div>
 </div>
 
+<% console %>
 
 </div>

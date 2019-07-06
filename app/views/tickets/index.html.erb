@@ -7,32 +7,42 @@
 
 <div class="container">
   <div class="table-responsive">
-    <table class="table">
-      <% @tickets.each do |ticket| %>
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Sku</th>
-              <th scope="col">Event</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><%= ticket.event %>  </th>
-                <td><%= ticket.event %></td>
-                <td><%= ticket.sku %></td>
-                <td><%= ticket.id %></td>
 
-            </tr>
-          </tbody>
+    <table class="table table-condensed" style="border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Sku</th>
+          <th scope="col">Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tickets.each do |ticket| %>
+          <tr data-toggle="collapse" data-target="#<%= ticket.event_id%>" class="accordion-toggle">
+            <td><%= ticket.event_id %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="hiddenRow">
+              <div class="accordian-body collapse" id="<%= ticket.event_id%>">
+                <%= event.event %>
+              </div>
+            </td>
+            <td colspan="2" class="hiddenRow">
+              <div class="accordian-body collapse" id="<%= ticket.event_id %>"><%= ticket.event %></div>
+            </td>
+            <td colspan="2" class="hiddenRow">
+              <div class="accordian-body collapse" id="<%= ticket.event_id%>"><%= ticket.sku %></div>
+            </td>
+            <td colspan="2" class="hiddenRow">
+              <div class="accordian-body collapse" id="<%= ticket.event_id%>"><%= ticket.id %></div>
+            </td>
+          </tr>
         <% end %>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
-  <br>
+</div>
+<%#= link_to 'New Ticket', new_ticket_path %>
 
-  <%#= link_to 'New Ticket', new_ticket_path %>
-
-    <%#= link_to 'Edit', edit_ticket_path(ticket) %>
-      <%#= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%#= link_to 'Edit', edit_ticket_path(ticket) %>
+    <%#= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %>

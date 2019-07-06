@@ -1,14 +1,55 @@
-<p id="notice"><%= notice %></p>
+<section class="page-section">
+  <div class="d-flex justify-content-center ">
+    <div class="container-fluid">
+          <h1>Events</h1>
 
-<p>
-  <strong>Sku:</strong>
-  <%= @ticket.sku %>
-</p>
+          <div class="ticket-container">
+          <div class="row">
+            <article class="ticket-card ticket-fl-left">
+              <section class="ticket-date">
+                <small><%= @ticket.event.title %></small>
 
-<p>
-  <strong>Event:</strong>
-  <%= @ticket.event %>
-</p>
+                <time datetime="23th feb">
+                  <span>
+                    <%= @ticket.event.begin.strftime('%d') %>
+                  </span><span><%= @ticket.event.begin.strftime('%m / %y') %></span>
+                </time>
+              </section>
+              <section class="ticket-card-cont">
+                <small>
+                  <%= @ticket.id %>
+                </small>
+                <h3><%= @ticket.event.title %></h3>
+                <div class="ticket-even-date">
+                  <i class="fa fa-calendar"></i>
+                  <time>
+                    <span><%= @ticket.event.begin.strftime('%A - %D') %></span>
+                    <span><%= @ticket.event.end.strftime('%A - %D')%>
+                      to 12:00 am</span>
+                  </time>
+                </div>
+                <div class="ticket-even-info">
+                  <i class="fa fa-map-marker"></i>
+                  <p>
+                    nexen square for people australia, sydney
+                  </p>
+                </div>
+                <%= link_to "Book", new_ticket_order_path(@ticket.id) %>
+              </section>
+            </article>
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+          </div>
+        </div>
+        <div class="container">
+
+          <p id="notice"><%= notice %></p>
+
+          <%= link_to 'Edit', edit_ticket_path(@ticket) %>
+          |
+          <%= link_to 'Back', tickets_path %>
+
+        </div>
+      </div>
+    </div>
+
+</section>

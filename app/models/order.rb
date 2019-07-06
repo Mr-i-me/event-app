@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :ticket
+  belongs_to :ticket, dependent: :destroy
 end

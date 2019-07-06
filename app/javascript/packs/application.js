@@ -1,5 +1,5 @@
 import "bootstrap";
-
+import "../components/add_select_table.js"
 //
 // let i=2;
 //

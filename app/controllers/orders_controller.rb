@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update destroy]
-  before_action :set_order, only: %i[ create ]
+  before_action :set_ticket, only: %i[ create new ]
 
   # GET /orders
   # GET /orders.json
@@ -16,6 +16,10 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @ticket = Ticket.find(params[:ticket_id])
+    # @order.price = @ticket.price
+    @order.user = current_user
+    @order.ticket = @ticket
   end
 
   # GET /orders/1/edit
@@ -26,9 +30,11 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.price = @ticket.price
+    @ticket = Ticket.find(params[:ticket_id])
+    # @order.price = @ticket.price
     @order.user = current_user
     @order.ticket = @ticket
+    # @ticket_order = Ticket.where(sold: false, id: @ticket).first
 
     respond_to do |format|
       if @order.save
@@ -79,6 +85,6 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:user_id, :ticket_id)
+    params.require(:order).permit(:user_id, :price, :ticket_id)
   end
 end
