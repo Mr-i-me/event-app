@@ -34,6 +34,9 @@
                     nexen square for people australia, sydney
                   </p>
                 </div>
+                <div class="page-top">
+                  <%= humanized_money_with_symbol(@ticket.price)  %>
+                </div>
                 <%= link_to "Book", new_ticket_order_path(@ticket.id) %>
               </section>
             </article>

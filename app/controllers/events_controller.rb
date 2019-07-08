@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @ticket = Ticket.where(event_id: @event.id, sold: false)
-
   end
 
   # GET /events/new
@@ -28,20 +27,23 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @tickets = @event.event_tickets
+    # @tickets = Ticket.where(event_id: @event.id, sold: false)
+    # @totalTickets = @event.event_tickets
+    # @tickets = Ticket.where(event_id: params[:event_id])
+    # @price = @event.tickets(:price)
 
     respond_to do |format|
-    if @event.save
-      @tickets.times do
-        Ticket.create(event: @event, sold: false)
+      # @totalTickets.times do
+      # Ticket.create(event: @event, sold: false, price: @price )
+      # end
+      if @event.save
+        format.html { redirect_to(new_tickets_url) }
+        format.js
+        format.xml { render xml: @tickets.to_xml(include: @event) }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-      format.html { redirect_to @event, notice: 'Event was successfully created.' }
-      format.json { render :show, status: :created, location: @event }
-
-    else
-      format.html { render :new }
-      format.json { render json: @event.errors, status: :unprocessable_entity }
-    end
     end
   end
 

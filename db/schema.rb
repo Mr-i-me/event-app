@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_153141) do
     t.bigint "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
+    t.integer "price_cents", default: 0, null: false
     t.index ["ticket_id"], name: "index_orders_on_ticket_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_153141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "sold"
-    t.integer "price"
+    t.integer "price_cents", default: 0, null: false
     t.index ["event_id"], name: "index_tickets_on_event_id"
   end
 

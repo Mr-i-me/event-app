@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = Order.new(user_id: current_user, price: 50, ticket_id: @ticket)
     @ticket = Ticket.find(params[:ticket_id])
     # @order.price = @ticket.price
     @order.user = current_user
@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
   private
 
   def set_ticket
-    @ticket = Ticket.find(params[:ticket_id])
+    @ticket = Ticket.select(params[:ticket_id])
   end
 
   # Use callbacks to share common setup or constraints between actions.
