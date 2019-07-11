@@ -18,25 +18,10 @@
       </thead>
       <tbody>
         <% @tickets.each do |ticket| %>
-          <tr data-toggle="collapse" data-target="#<%= ticket.event_id%>" class="accordion-toggle">
-            <td><%= ticket.event_id %></td>
+        <tr class="hiddenRow">
+          <th scope="row" onclick="clickme"><%= ticket.event_id%></th>
           </tr>
-          <tr>
-            <td colspan="2" class="hiddenRow">
-              <div class="accordian-body collapse" id="<%= ticket.event_id%>">
-                <%= event.event %>
-              </div>
-            </td>
-            <td colspan="2" class="hiddenRow">
-              <div class="accordian-body collapse" id="<%= ticket.event_id %>"><%= ticket.event %></div>
-            </td>
-            <td colspan="2" class="hiddenRow">
-              <div class="accordian-body collapse" id="<%= ticket.event_id%>"><%= ticket.sku %></div>
-            </td>
-            <td colspan="2" class="hiddenRow">
-              <div class="accordian-body collapse" id="<%= ticket.event_id%>"><%= ticket.id %></div>
-            </td>
-          </tr>
+          <tr><td id="hidden" class="hidden"><p><%= ticket.id %></p></td><td id="hidden" class="hidden"><p><%= ticket.event_id %></p></td><td id="hidden" class="hidden"><p><%= ticket.price %></p></td></tr>
         <% end %>
       </tbody>
     </table>
@@ -46,3 +31,4 @@
 
   <%#= link_to 'Edit', edit_ticket_path(ticket) %>
     <%#= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%console%>

@@ -29,11 +29,16 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-    @ticket = Ticket.find(params[:ticket_id])
+    ticket = Ticket.find(params[:ticket_id])
+    order  = Order.create!(ticket_sku: ticket.sku, amount: ticket.price, state: 'pending', user: current_user)
+    # @order = Order.new(order_params)
+    # @ticket = Ticket.find(params[:ticket_id])
+
+     redirect_to new_order_payment_path(order)
+
     # @order.price = @ticket.price
-    @order.user = current_user
-    @order.ticket = @ticket
+    # @order.user = current_user
+    # @order.ticket = @ticket
     # @ticket_order = Ticket.where(sold: false, id: @ticket).first
 
     respond_to do |format|

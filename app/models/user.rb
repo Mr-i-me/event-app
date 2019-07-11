@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :events
   has_many :boletos
   has_many :tickets
-  has_many :tickets, through: :orders
+  has_many :orders
 end

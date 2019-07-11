@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show edit update destroy]
-  before_action :set_tickets, only: %i[create update edit]
+  before_action :set_tickets, only: %i[index show create update edit]
   # GET /tickets
   # GET /tickets.json
   def index
@@ -20,16 +20,15 @@ class TicketsController < ApplicationController
 
   # GET /tickets/1/edit
   def edit
-
   end
 
   # POST /tickets
   # POST /tickets.json
   def create
+    @ticket.sku = "#{@ticket.event_id}00#{@ticket.id}"
     @ticket = Ticket.new(ticket_params)
-    @sku = @ticket + @ticket.event_id
     # @event = @ticket.event_id
-    Ticket.sku = @sku
+
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
@@ -45,15 +44,18 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1.json
   def update
     respond_to do |format|
+      # Ticket.where(event_id: @event, sold: false)
       if @ticket.update(ticket_params)
-        # Ticket.where(event_id: @event, sold: false)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @ticket }
+      elsif @tickets.update_all(price_cents: @ticket.price_cents)
+        format.html { redirect_to @ticket, notice: 'Tickets were successfully updated.' }
+        format.json { render :show, status: :ok, location: @ticket }
+
       else
         format.html { render :edit }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
-      @tickets.update_all(price_cents: @ticket.price_cents)
     end
     # @price = price
     # @ticket_price = @ticket.price_cents
@@ -78,7 +80,8 @@ class TicketsController < ApplicationController
 
   # Select all Tickets from event where {sold: = false}
   def set_tickets
-    @event = Event.where(id: @ticket.event_id).first
+    event_id = params[:event_id]
+    @event = Event.where(id: event_id).first
     @tickets = Ticket.where(event_id: @event, sold: false)
     # @ticket = Ticket.find(params[:id])
   end

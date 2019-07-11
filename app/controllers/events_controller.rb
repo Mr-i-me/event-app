@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy create_tickets]
-
+before_action :event_params, only: %i[ create ]
   # GET /events
   # GET /events.json
   def index
@@ -32,19 +32,19 @@ class EventsController < ApplicationController
     # @tickets = Ticket.where(event_id: params[:event_id])
     # @price = @event.tickets(:price)
 
-    respond_to do |format|
-      # @totalTickets.times do
-      # Ticket.create(event: @event, sold: false, price: @price )
-      # end
-      if @event.save
-        format.html { redirect_to(new_tickets_url) }
-        format.js
-        format.xml { render xml: @tickets.to_xml(include: @event) }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    # respond_to do |format|
+    # @totalTickets.times do
+      # Ticket.create(event_id: @event.id, sold: false)
+    # end
+    if @event.save
+      redirect_to new_ticket_path(@event)
+      # format.js
+      # format.xml { render xml: @tickets.to_xml(include: @event) }
+    else
+      format.html { render :new }
+      format.json { render json: @event.errors, status: :unprocessable_entity }
     end
+    # end
   end
 
   # PATCH/PUT /events/1

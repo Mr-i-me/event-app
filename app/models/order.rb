@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
+  belongs_to :ticket
   belongs_to :user
-  belongs_to :ticket, dependent: :destroy
-  monetize :price_cents
+  monetize :amount_cents
+
 end

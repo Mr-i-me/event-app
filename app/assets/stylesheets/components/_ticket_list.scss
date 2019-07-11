@@ -1,12 +1,242 @@
-$background_color_1: #eeeeee;
-
-.table {
-	tr {
-		cursor: pointer;
-	}
+.t-l-page-title {
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: 100;
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
-.hiddenRow {
-	padding: 0 4px !important;
-	background-color: $background_color_1;
-	font-size: 13px;
+
+.t-l-wrapper {
+  width: 100%;
+  min-height: 930px;
+  display: block;
+  position: relative;
+  background: #333333;
+  background-image: url("https://images.t-l-unsplash.t-l-com/photo-1448485780098-7e0b78781fc1?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.t-l-1.t-l-0&ixlib=rb-0.t-l-3.5&q=50&w=1450");
+  background-size: cover;
+  background-position: center center;
+  padding-bottom: 50px;
+}
+.t-l-wrapper:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111111;
+  display: block;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: .6;
+}
+.t-l-wrapper .t-l-container {
+  z-index: 2;
+  position: relative;
+}
+.t-l-wrapper footer {
+  position: absolute;
+  z-index: 3;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.t-l-wrapper footer h3 {
+  color: #FFFFFF;
+  font-weight: 200;
+}
+.t-l-wrapper footer h3 a{
+    color:#eeeeee;
+}
+.t-l-wrapper footer .t-l-social-icon {
+  color: #FFFFFF;
+  opacity: 0.8;
+  font-size: 34px;
+  margin: 20px;
+}
+.t-l-wrapper footer .t-l-social-icon:hover {
+  opacity: 1;
+}
+
+.t-l-ticket-card {
+  margin-top: 15vh;
+  margin-bottom: 15vh;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+.t-l-ticket-card:hover .t-l-cover img, .t-l-ticket-card.t-l-active .t-l-cover img {
+  -moz-transform: translate(0, -50px);
+  -o-transform: translate(0, -50px);
+  -ms-transform: translate(0, -50px);
+  -webkit-transform: translate(0, -50px);
+  transform: translate(0, -50px);
+  box-shadow: 0 10px 20px -4px rgba(22, 22, 22, 0.5);
+}
+.t-l-ticket-card .t-l-cover {
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  margin: 15px;
+}
+.t-l-ticket-card .t-l-cover img {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-top: -30px;
+  box-shadow: 0 10px 16px -6px rgba(22, 22, 22, 0.5);
+  border-radius: 4px;
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  -moz-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  -o-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  -ms-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+}
+.t-l-ticket-card .t-l-cover .t-l-info {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  padding: 0 15px;
+  color: #777777;
+}
+.t-l-ticket-card .t-l-cover .t-l-info .t-l-going,
+.t-l-ticket-card .t-l-cover .t-l-info .t-l-tickets-left {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f3f3f3;
+  width: 50%;
+}
+.t-l-ticket-card .t-l-cover .t-l-info .t-l-going {
+  float: left;
+}
+.t-l-ticket-card .t-l-cover .t-l-info .t-l-tickets-left {
+  float: right;
+  text-align: right;
+}
+.t-l-ticket-card .t-l-cover .t-l-info .fa {
+  color: $primary;
+  margin-right: 5px;
+}
+.t-l-ticket-card .t-l-artist {
+  float: left;
+}
+.t-l-ticket-card .t-l-artist .t-l-info {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: $primary;
+  margin-bottom: 0;
+}
+.t-l-ticket-card .t-l-artist .t-l-name {
+  font-weight: 200;
+  font-size: 22px;
+  margin-top: 5px;
+}
+.t-l-ticket-card .t-l-ticket {
+  float: left;
+}
+.t-l-ticket-card .t-l-ticket small {
+  font-size: 75%;
+}
+.t-l-ticket-card .t-l-price {
+  float: right;
+  text-align: right;
+}
+.t-l-ticket-card .t-l-price .t-l-from {
+  color: $primary;
+}
+.t-l-ticket-card .t-l-price .t-l-value {
+  font-size: 28px;
+  font-weight: 200;
+  color: $primary;
+  margin-top: -5px;
+}
+.t-l-ticket-card .t-l-price .t-l-value b {
+  font-size: 18px;
+  font-weight: 200;
+}
+.t-l-ticket-card .t-l-list-unstyled {
+  max-height: 200px;
+  overflow-x: scroll;
+  background: #EEEEEE;
+  margin-bottom: 0;
+  box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.t-l-ticket-card .t-l-list-unstyled li {
+  border-bottom: 1px dotted $primary;
+  padding: 5px 30px;
+  overflow: hidden;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+.t-l-ticket-card .t-l-list-unstyled li .t-l-btn-buy {
+  position: absolute;
+  right: 15px;
+  top: 13px;
+  padding: 8px 20px;
+  border-radius: 6px;
+  background: $primary;
+  border: 0;
+  opacity: 0;
+  -webkit-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  -moz-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  -o-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  -ms-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+  transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 300ms ease, opacity 300ms ease;
+}
+.t-l-ticket-card .t-l-list-unstyled li:hover .t-l-btn-buy {
+  opacity: 1;
+}
+.t-l-ticket-card .t-l-list-unstyled li:last-child {
+  border-bottom: none;
+}
+.t-l-ticket-card .t-l-list-unstyled li:before, .t-l-ticket-card .t-l-list-unstyled li:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+.t-l-ticket-card .t-l-list-unstyled li .t-l-price .t-l-value {
+  color: #444444;
+  font-size: 22px;
+  margin-top: 10px;
+}
+.t-l-ticket-card .t-l-body {
+  padding: 5px 30px;
+}
+.t-l-ticket-card .t-l-body .t-l-info {
+  color: #777777;
+}
+.t-l-ticket-card .t-l-body .t-l-location,
+.t-l-ticket-card .t-l-body .t-l-date {
+  padding-top: 10px;
+  width: 50%;
+}
+.t-l-ticket-card .t-l-body .t-l-location {
+  float: left;
+}
+.t-l-ticket-card .t-l-body .t-l-date {
+  float: right;
+  text-align: right;
+}
+.t-l-ticket-card .t-l-body .fa {
+  color: $primary;
+  margin-right: 5px;
+}
+.t-l-ticket-card .t-l-footer .t-l-btn {
+  width: 100%;
+  background: transparent;
+  border-top: 1px dotted $primary;
+  border-radius: 0;
+  padding: 15px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #666666;
+  box-shadow: none;
+}
+.t-l-ticket-card .t-l-footer .btn:focus, .t-l-ticket-card .t-l-footer .btn:hover, .t-l-ticket-card .t-l-footer .btn:active {
+  outline: none !important;
 }
