@@ -1,10 +1,10 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show edit update destroy]
-  before_action :set_tickets, only: %i[index show create update edit]
+  before_action :set_tickets, only: %i[index show update edit]
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    # @tickets = Ticket.all
     @events = Event.all
   end
 
@@ -15,7 +15,12 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    event_id = params[:event_id]
+    @event = Event.where(id: event_id).first
+    @ticket = Ticket.new(params[event_id: @event])
+    @ticket.event_id = @event.id
+
+    # @ticket.event_id = @event.id
   end
 
   # GET /tickets/1/edit
@@ -25,9 +30,9 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket.sku = "#{@ticket.event_id}00#{@ticket.id}"
     @ticket = Ticket.new(ticket_params)
-    # @event = @ticket.event_id
+    @ticket.sku = "#{@ticket.event_id}0#{@ticket.id}"
+    @event = @ticket.event_id
 
     respond_to do |format|
       if @ticket.save
@@ -82,12 +87,12 @@ class TicketsController < ApplicationController
   def set_tickets
     event_id = params[:event_id]
     @event = Event.where(id: event_id).first
-    @tickets = Ticket.where(event_id: @event, sold: false)
+    @tickets = Ticket.where(event_id: @event.id, sold: false)
     # @ticket = Ticket.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def ticket_params
-    params.require(:ticket).permit(:sku, :event_id, :price)
+    params.require(:ticket).permit(:sku, :event_id, :category, :price, :sold)
   end
 end

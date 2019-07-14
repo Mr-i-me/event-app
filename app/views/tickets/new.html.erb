@@ -6,7 +6,8 @@
   <div class="form-inputs">
     <%= f.input :sku %>
     <%= f.input :price %>
-    <%= f.association :event %>
+    <%= f.association :event, disabled: true, value: @event.id %>
+    <%= f.select :category, ["standard", "student", "special"] %>
   </div>
 
   <div class="form-actions">

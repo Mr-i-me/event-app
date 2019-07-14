@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   # resources :boletos
 
   resources :events do
-    resources :tickets
+    resources :tickets, only: [:new]
   end
+  resources :tickets, only: [:create]
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
